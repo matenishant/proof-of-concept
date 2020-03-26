@@ -1,0 +1,53 @@
+
+
+<html>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<body>
+<script>
+    $(document).ready(function(){
+
+        $('.input').focus(function(){
+          $(this).parent().find(".label-txt").addClass('label-active');
+        });
+      
+        $(".input").focusout(function(){
+          if ($(this).val() == '') {
+            $(this).parent().find(".label-txt").removeClass('label-active');
+          };
+        });
+      
+      });
+</script>
+
+
+
+</body>
+<div style="float: left; height: 750px; overflow: scroll;">
+<form> 
+    <label style="font-size: large;font-family:'Courier New', Courier, monospace ;">SERVER</label>
+   
+
+   
+    <div *ngFor= 'let item of sha'>
+     
+    <div  style= 'background-color: brown;width: 300px; margin-top: 
+    20px; margin-left: 50px;; height: 100px; overflow-wrap: break-word;'>
+      <p style="color: #fff;" >{{item}}<br/></p></div>
+        <span style='font-size:30px;'>&#8595;</span>
+
+    </div> 
+    <p *ngIf= 'sha.length==0' style="color:brown">No records</p>
+    
+
+
+  
+   
+   
+  
+</form>
+</div>
+</html>

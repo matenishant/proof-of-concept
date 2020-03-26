@@ -1,0 +1,159 @@
+
+
+<html>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<body>
+<script>
+    $(document).ready(function(){
+
+        $('.input').focus(function(){
+          $(this).parent().find(".label-txt").addClass('label-active');
+        });
+      
+        $(".input").focusout(function(){
+          if ($(this).val() == '') {
+            $(this).parent().find(".label-txt").removeClass('label-active');
+          };
+        });
+      
+      });
+</script>
+<script type="text/javascript">
+  var auto_refresh = setInterval(
+  function () {
+      $('#div').load('another.page');
+  }, 1000);
+  </script>
+
+
+
+
+
+<div style="float: left; height: 750px; overflow: scroll;"> 
+  
+<form>
+  <div class="container" *ngIf = "displayUserInfo == false">
+    <label style="font-size: large;font-family:'Courier New', Courier, monospace ;">DOCTOR</label>
+  
+   
+           
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <!-- <th>Sr no.</th> -->
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Status</th>
+
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor = 'let item of issues' >
+            <p style="align-items: center;color:red" *ngIf= "item.length == 0"> No Record Found</p>
+            <!-- <a [routerLink] = "" (click) = "getIssue(item._id)" href = ""  ><td>{{item._id}}</td> </a> -->
+            <td>{{item.firstname}}</td>
+            <td>{{item.lastname}}</td>
+            <a [routerLink] = "" (click) = "getIssue(item._id)" href = "" > <td>{{item.status}}</td></a>
+
+          
+          </tr>
+          
+        </tbody>
+        
+      </table>
+    </div> 
+    <p *ngIf= 'issues.length==0' style="color:brown; text-align: center;">No Records found </p>
+  </form>
+
+ 
+</div>
+
+    
+   <!--Display user information-->
+ 
+   <div *ngIf = "displayUserInfo == true"> 
+
+  <div style="float: left; height: 750px; overflow: scroll;" > 
+    <form  #doctorForm="ngForm" (ngSubmit)= "updateStatus(doctorForm.value)" class="userForm">
+      <label style="font-size: large;font-family:'Courier New', Courier, monospace ;">DOCTOR</label>
+    
+      <label>
+      
+        <p class="label-txt">Patient Id</p>
+        <input  type="text" class="form- control input"  ngModel= '{{this.data["_id"]}}' name="id" >  
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+    
+      <label>
+      
+      <p class="label-txt">FIRST NAME</p>
+      <input  type="text" class="form-control input" value = '{{this.data["firstname"]}}'  disabled>
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+    <label>
+      <p class="label-txt">LAST NAME</p>
+      <input type="text" class="input" value = '{{this.data["lastname"]}}' disabled>
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+    <label>
+      <p class="label-txt">ADHAR NO.</p>
+      <input type="text" class="input" value = '{{this.data["adharno"]}}' disabled >
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+    <label>
+      <p class="label-txt">CONTACT NO.</p>
+      <input type="text" class="input" value = '{{this.data["contactno"]}}'disabled >
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+  
+    <label>
+      <p class="label-txt">SYMPTOMS</p>
+      <input type="text" class="input"  value = '{{this.data["symtomps"]}}' disabled>
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+    <label>
+      <p class="label-txt">AGE</p>
+      <input type="text" class="input" value = '{{this.data["age"]}}' disabled>
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+  
+    <label>
+      <p class="label-txt" style="margin: -9px -1px;" disabled>SEX</p>
+      <p>{{this.data["sex"]}} </p> 
+     
+    </label>
+    <label>
+      <p class="label-txt">UPDATE STATUS</p>
+      <input type="text" class="input" [(ngModel)]= "status" name="status" >
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+    <button type="submit">submit</button>
+    
+</form>
+</div>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+
+<html>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<body>
+<script>
+    $(document).ready(function(){
+
+        $('.input').focus(function(){
+          $(this).parent().find(".label-txt").addClass('label-active');
+        });
+      
+        $(".input").focusout(function(){
+          if ($(this).val() == '') {
+            $(this).parent().find(".label-txt").removeClass('label-active');
+          };
+        });
+      
+      });
+</script>
+
+
+
+</body>
+<div style="float: left; height: 750px; overflow: scroll;">
+    
+<form #myForm="ngForm" (ngSubmit)= "addIssue(myForm.value)"> 
+    <label style="font-size: large;font-family:'Courier New', Courier, monospace ;">HOSPITAL</label> 
+  
+    <label>
+      
+    <p class="label-txt">FIRST NAME</p>
+    <input  type="text" class="form- control input" [(ngModel)]="firstname" name="firstname">
+    <div class="line-box">
+      <div class="line"></div>
+    </div>
+  </label>
+  <label>
+    <p class="label-txt">LAST NAME</p>
+    <input type="text" class="input" [(ngModel)]="lastname" name="lastname">
+    <div class="line-box">
+      <div class="line"></div>
+    </div>
+  </label>
+  <label>
+    <p class="label-txt">ADHAR NO.</p>
+    <input type="text" class="input" [(ngModel)]="adharno" name="adharno" >
+    <div class="line-box">
+      <div class="line"></div>
+    </div>
+  </label>
+  <label>
+    <p class="label-txt">CONTACT NO.</p>
+    <input type="text" class="input" [(ngModel)]="contactno" name="contactno">
+    <div class="line-box">
+      <div class="line"></div>
+    </div>
+  </label>
+
+  <label>
+    <p class="label-txt">SYMPTOMS</p>
+    <input type="text" class="input" [(ngModel)]="symtomps" name="symtomps">
+    <div class="line-box">
+      <div class="line"></div>
+    </div>
+  </label>
+  <label>
+    <p class="label-txt">AGE</p>
+    <input type="text" class="input" [(ngModel)]="age" name="age">
+    <div class="line-box">
+      <div class="line"></div>
+    </div>
+  </label>
+
+  <label>
+    <p class="label-txt" style="margin: -9px -1px;" >SEX</p>
+    
+    <p class="label-txt" style="margin: 15px 10px;"> Male</p>
+    <input [(ngModel)]="sex"  
+    #genderControl="ngModel" style="float: left;"
+    type="radio" 
+    id="male" name="sex" value="male" class=""><br>
+    
+    <p class="label-txt" style="margin: 30px 10px;"> Female</p>
+    <input [(ngModel)]="sex"   style="float: left;"
+    type="radio" id="female" name="sex" value="female" class="">
+
+
+  </label>
+  
+
+
+  <button type="submit">submit</button>
+</form>
+</div>
+</html>
